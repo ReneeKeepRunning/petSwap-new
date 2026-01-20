@@ -1,0 +1,130 @@
+/* ===============================
+   Footer 基础样式（你已有）
+================================ */
+.footer {
+  background: linear-gradient(
+    135deg,
+    var(--bg-dark) 0%,
+    var(--primary-blue-dark) 100%
+  );
+  color: var(--text-white);
+  padding: 3rem 0 2rem;
+  margin-top: auto;
+  box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* ===============================
+   Footer 容器布局
+================================ */
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem 2rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5rem;
+}
+
+/* ===============================
+   Footer 区块
+================================ */
+.footer-section h3 {
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--text-white);
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section li {
+  margin-bottom: 0.6rem;
+}
+
+/* ===============================
+   Footer 链接
+================================ */
+.footer-section a {
+  color: var(--text-white);
+  opacity: 0.85;
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  transition: var(--transition);
+}
+
+.footer-section a:hover {
+  opacity: 1;
+  color: var(--accent-blue);
+}
+
+/* ===============================
+   品牌区
+================================ */
+.footer-logo {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--text-white);
+}
+
+.footer-desc {
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+  opacity: 0.85;
+  max-width: 260px;
+}
+
+/* ===============================
+   Copyright（你已有，微调）
+================================ */
+.footer-copyright {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  text-align: center;
+  padding-top: 1.25rem;
+  font-size: var(--font-size-sm);
+  opacity: 0.9;
+}
+
+.footer-copyright a {
+  color: var(--accent-blue);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.footer-copyright a:hover {
+  color: var(--text-white);
+  text-decoration: underline;
+}
+
+/* ===============================
+   Responsive
+================================ */
+
+/* Tablet */
+@media (max-width: 900px) {
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .footer {
+    padding: 2rem 0 1.5rem;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-desc {
+    margin: 0 auto;
+  }
+}
