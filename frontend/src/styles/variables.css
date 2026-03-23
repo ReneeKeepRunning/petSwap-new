@@ -1,11 +1,11 @@
 /* CSS Variables - 全局设计系统 */
 :root {
   /* 主色调 - 蓝色系 */
-  --primary-blue: #2563eb;
-  --primary-blue-dark: #1e40af;
+  --primary-blue: #4278ed;
+  --primary-blue-dark: #12a9e1d9;
   --primary-blue-light: #3b82f6;
   --secondary-blue: #60a5fa;
-  --accent-blue: #93c5fd;
+  --accent-blue: #faa185;
 
   /* 背景色 */
   --bg-primary: #ffffff;

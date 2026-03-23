@@ -106,6 +106,10 @@ app.use((err, req, res, next) => {
     res.status(statusCode).json({ error: err.message });
 });
 
+app.use(express.static('public', {
+  maxAge: '30d'
+}));
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);

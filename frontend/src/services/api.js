@@ -21,6 +21,8 @@ export const productService = {
     headers: { 'Content-Type': 'multipart/form-data' }
   }),
   deleteProduct: (id) => api.delete(`/products/${id}`),
+  searchProducts: (query) =>
+    api.get(`/products/search?query=${encodeURIComponent(query)}`)
 };
 
 // Reviews API

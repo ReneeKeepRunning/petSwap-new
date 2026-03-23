@@ -34,6 +34,24 @@ module.exports.newFormPost = async (req, res, next) => {
     }
 };
 
+module.exports.searchProduct = async (req, res) => {
+  try {
+    console.log('hit search backend')
+    const { query } = req.query;
+
+    if (!query) return res.status(400).json({ message: 'input is required' });
+
+    const products = await Product.find({
+      name: { $regex: query, $options: 'i' }
+    });
+
+    res.json(products);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
 module.exports.showById = async (req, res) => {
     const { id } = req.params;
     const foundproduct = await Product.findById(id)
