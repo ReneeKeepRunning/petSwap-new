@@ -3,12 +3,15 @@ import { Link } from 'react-router-dom';
 import { productService } from '../services/api';
 import { useFlash } from '../contexts/FlashContext';
 import './Products.css';
+import { getOptimizedImage } from '../utils/cloudinary';
 
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [query, setQuery] = useState(''); // 🔥 search input
   const { error } = useFlash();
 
+  // 👉 获取全部产品
   const fetchProducts = useCallback(async () => {
     try {
       const response = await productService.getAllProducts();
@@ -25,7 +28,26 @@ const Products = () => {
     fetchProducts();
   }, [fetchProducts]);
 
-  // 👉 本地默认图片（public/images/default-product.png）
+  const handleSearch = async (e) => {
+    e.preventDefault();
+
+    if (!query.trim()) {
+      fetchProducts();
+      return;
+    }
+
+    try {
+      setLoading(true);
+      const response = await productService.searchProducts(query);
+      setProducts(response.data);
+    } catch (err) {
+      error('Search failed');
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const defaultImage = '/images/default-product.png';
 
   if (loading) {
@@ -35,9 +57,22 @@ const Products = () => {
   return (
     <div className="products-page">
 
-      {/* ===== Page Header ===== */}
+      {/* ===== Header ===== */}
       <div className="products-page-header">
+        <div className='title-search'>
         <h1 className="page-title">Items people are looking for</h1>
+
+        {/* 🔍 搜索栏 */}
+        <form onSubmit={handleSearch} className="search-bar">
+          <input
+            type="text"
+            placeholder="Search products..."
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+          <button type="submit">Search</button>
+        </form>
+        </div>
 
         <div className="post-hint">
           <h3 className="page-postTitle">Post an item for sale</h3>
@@ -47,20 +82,23 @@ const Products = () => {
         </div>
       </div>
 
+      {/* ===== Product List ===== */}
       <div className="products-list">
         {products.length === 0 ? (
-          <p className="text-center">No products available yet.</p>
+          <p className="text-center">No products found.</p>
         ) : (
           products.map((product) => (
             <div key={product._id} className="product-card">
               <div className="product-image">
                 <img
-                  src={
+                  src={getOptimizedImage(
                     product.image && product.image.length > 0
                       ? product.image[0].url
                       : defaultImage
+                  , 360)
                   }
                   alt={product.name}
+                  loading="lazy"
                 />
               </div>
 

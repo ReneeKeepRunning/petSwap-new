@@ -110,7 +110,7 @@
 }
 
 /* 移动端响应式 */
-@media (max-width: 991px) {
+@media (max-width: 420px) {
   .navbar-collapse {
     background-color: rgba(30, 58, 138, 0.95);
     padding: 1rem;

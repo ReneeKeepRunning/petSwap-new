@@ -1,0 +1,36 @@
+/* Search Bar 容器 */
+.search-form {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* 输入框 */
+.search-input {
+  padding: 0.5rem;
+  width: 250px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.search-input:focus {
+  border-color: #2563eb;
+}
+
+/* 按钮 */
+.search-btn {
+  padding: 0.5rem 1rem;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.search-btn:hover {
+  background-color: #1e40af;
+}

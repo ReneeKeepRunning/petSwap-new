@@ -17,6 +17,11 @@ router.post(
   catchAsync(productsController.newFormPost)
 )
 
+router.get(
+  '/search',
+  catchAsync(productsController.searchProduct)
+)
+
 router.get('/:id', catchAsync(productsController.showById))
 
 router.put(
@@ -34,5 +39,6 @@ router.delete(
   isAuthor,
   catchAsync(productsController.productDelete)
 )
+
 
 module.exports = router
