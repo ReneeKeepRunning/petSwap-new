@@ -69,7 +69,10 @@ app.use(session({
 //   credentials: true
 // }));
 
-
+app.use(cors({
+  origin: process.env.FRONTEND_URL || 'http://localhost:3001',
+  credentials: true
+}));
 
 
 app.use(helmet());
@@ -112,7 +115,16 @@ app.use(express.static('public', {
   maxAge: '30d'
 }));
 
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
+// const port = process.env.PORT || 3000;
+// app.listen(port, () => {
+//     console.log(`Server running on port ${port}`);
+// });
+
+if (process.env.NODE_ENV !== 'production') {
+  const port = process.env.PORT || 3000;
+  app.listen(port, () => {
     console.log(`Server running on port ${port}`);
-});
+  });
+}
+
+module.exports = app;
