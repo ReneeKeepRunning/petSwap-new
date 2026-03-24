@@ -1,15 +1,14 @@
 {
   "builds": [
     {
-      "src": "frontend/**",
+      "src": "frontend/**/*.{js,jsx,ts,tsx,json,html,css,svg,png,jpg,jpeg,gif,ico,webp}",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "build",
-        "buildCommand": "cd frontend && npm install && npm run build"
+        "distDir": "build"
       }
     },
     {
-      "src": "backend/index.js",
+      "src": "backend/**/*.js",
       "use": "@vercel/node"
     }
   ],
